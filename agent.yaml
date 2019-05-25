@@ -12,6 +12,7 @@ logging:
 # observers are what discover running services in the environment
 observers:
   - type: host
+# - type: docker
 
 monitors:
   - {"#from": "/etc/signalfx/monitors/*.yaml", flatten: true, optional: true}
