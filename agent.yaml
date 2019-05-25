@@ -48,7 +48,5 @@ monitors:
       </Page>
      </Plugin>
 
-
-
 metricsToExclude:
   - {"#from": "/usr/lib/signalfx-agent/lib/whitelist.json", flatten:true}
