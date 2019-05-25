@@ -29,6 +29,26 @@ monitors:
   - type: collectd/nginx
     host: localhost
     port: 80
+  - type: collectd/custom
+    template: |
+     LoadPlugin "curl"
+     <Plugin curl>
+      <Page "http check for localhost:80">
+       URL "http://localhost:80";
+       Digest false
+       VerifyPeer false
+       VerifyHost false
+       MeasureResponseTime true
+       MeasureResponseCode true
+       <Statistics>
+        TotalTime true
+        NamelookupTime true
+        SizeDownload true
+       </Statistics>
+      </Page>
+     </Plugin>
+
+
 
 metricsToExclude:
   - {"#from": "/usr/lib/signalfx-agent/lib/whitelist.json", flatten:true}
