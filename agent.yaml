@@ -33,7 +33,7 @@ monitors:
     template: |
      LoadPlugin "curl"
      <Plugin curl>
-      <Page "http check for localhost:80">
+      <Page "http_check">
        URL "http://localhost:80";
        Digest false
        VerifyPeer false
