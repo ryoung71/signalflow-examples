@@ -49,4 +49,4 @@ monitors:
      </Plugin>
 
 metricsToExclude:
-  - {"#from": "/usr/lib/signalfx-agent/lib/whitelist.json", flatten:true}
+  - {"#from": "/usr/lib/signalfx-agent/lib/whitelist.json", flatten: true}
