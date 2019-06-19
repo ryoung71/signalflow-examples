@@ -2,6 +2,7 @@
 signalFxAccessToken: {"#from": "/etc/signalfx/token"}
 ingestUrl: {"#from": "/etc/signalfx/ingest_url", default: "https://ingest.signalfx.com"}
 apiUrl: {"#from": "/etc/signalfx/api_url", default: "https://api.signalfx.com"}
+traceEndpointUrl: http://localhost:8080/v1/trace
 
 intervalSeconds: 10
 
@@ -25,6 +26,10 @@ monitors:
   - type: collectd/load
   - type: collectd/memory
   - type: collectd/signalfx-metadata
+      extraDimensions:
+      source: gateway
+      cluster: "REPLACE_WITH_YOUR_DESIRED_CLUSTER_NAME"
+  - type: trace-forwarder
   - type: collectd/vmem
   - type: collectd/nginx
     host: localhost
@@ -47,6 +52,7 @@ monitors:
        </Statistics>
       </Page>
      </Plugin>
+     
 
 metricsToExclude:
   - {"#from": "/usr/lib/signalfx-agent/lib/whitelist.json", flatten: true}
